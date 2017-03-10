@@ -1,20 +1,19 @@
 //
-//  LoginViewController.swift
+//  RegisterViewController.swift
 //  Embell
 //
-//  Created by Jonathon F Vega on 3/9/17.
+//  Created by Jonathon F Vega on 3/10/17.
 //  Copyright © 2017 Jonathon Vega. All rights reserved.
 //
 
 import UIKit
 import FirebaseAuth
 
-class LoginViewController: UIViewController {
+class RegisterViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,22 +30,22 @@ class LoginViewController: UIViewController {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
-
-    @IBAction func signInButtonTapped(_ sender: UIButton) {
+    
+    @IBAction func backToSignInViewController(_ sender: UIButton) {
         
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func registerAccountButtonTapped(_ sender: UIButton) {
         if let email=emailTextField.text, let password=passwordTextField.text {
-            FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+            FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
                 if user != nil {
                     self.performSegue(withIdentifier: "toHome", sender: self)
-                }
-                else {
+                } else {
                     // Check error message
                 }
             })
         }
     }
-    
-    
-    
-    
 }
