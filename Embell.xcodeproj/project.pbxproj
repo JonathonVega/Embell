@@ -385,6 +385,7 @@
 				9C87DA2A1E71BC39009B5524 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
