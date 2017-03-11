@@ -41,6 +41,7 @@ class LoginViewController: UIViewController {
                 }
                 else {
                     print("User should be nil!!!")
+                    print("This is mahnoor")
                     print("This is an error")
                     print(error!)
                     // Check error message
