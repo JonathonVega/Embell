@@ -26,16 +26,6 @@ class RegisterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        view.endEditing(true)
-    }
-    
-    @IBAction func backToSignInViewController(_ sender: UIButton) {
-        
-        self.dismiss(animated: true, completion: nil)
-        
-    }
     
     @IBAction func registerAccountButtonTapped(_ sender: UIButton) {
         if let email=emailTextField.text, let password=passwordTextField.text {
@@ -46,6 +36,7 @@ class RegisterViewController: UIViewController {
                     
                     if let errCode = FIRAuthErrorCode(rawValue: (error as! NSError).code){
                         
+                        // TODO: Need to fix errors through UI accordingly
                         switch errCode {
                         case .errorCodeInvalidEmail:
                             print("Invalid email")
@@ -56,10 +47,35 @@ class RegisterViewController: UIViewController {
                         }
                     }
                     
-                    print("This is an error!!")
                     print(error!)
+                    
                 }
             })
         }
     }
+    
+    @IBAction func backToSignInViewController(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    // Mark: - Keyboard setup
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
