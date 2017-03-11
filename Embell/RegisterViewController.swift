@@ -40,9 +40,10 @@ class RegisterViewController: UIViewController {
     @IBAction func registerAccountButtonTapped(_ sender: UIButton) {
         if let email=emailTextField.text, let password=passwordTextField.text {
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-                if user != nil {
+                if let u = user {
                     self.performSegue(withIdentifier: "toHome", sender: self)
                 } else {
+                    
                     // Check error message
                 }
             })

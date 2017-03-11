@@ -64,7 +64,6 @@
                                         <state key="normal" title="Sign-in"/>
                                         <connections>
                                             <action selector="signInButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zcV-Sw-Dem"/>
-                                            <segue destination="Hqt-x7-Pd5" kind="show" identifier="toHome" id="UOp-aW-G6p"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -116,6 +115,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="e32-nH-8Lt" id="gZZ-Xd-8Au"/>
                         <outlet property="passwordTextField" destination="UXD-pd-0DV" id="42b-bN-j7S"/>
+                        <segue destination="Hqt-x7-Pd5" kind="show" identifier="toHome" id="rz6-eH-tXg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -213,7 +213,6 @@
                                 <state key="normal" title="Register account"/>
                                 <connections>
                                     <action selector="registerAccountButtonTapped:" destination="BZU-3T-U0Z" eventType="touchUpInside" id="cBX-Rx-mqj"/>
-                                    <segue destination="Hqt-x7-Pd5" kind="show" identifier="toHome" id="Ea8-ue-MRQ"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="WNC-7h-Gix">
@@ -288,6 +287,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="vzn-Zd-qmg" id="LrY-8N-9aa"/>
                         <outlet property="passwordTextField" destination="XhZ-0X-0ay" id="1XZ-RM-xvs"/>
+                        <segue destination="Hqt-x7-Pd5" kind="show" identifier="toHome" id="kIV-gD-XBe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yYy-uS-bNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -296,6 +296,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ea8-ue-MRQ"/>
+        <segue reference="kIV-gD-XBe"/>
     </inferredMetricsTieBreakers>
 </document>

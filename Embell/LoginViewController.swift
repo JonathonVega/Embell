@@ -36,10 +36,13 @@ class LoginViewController: UIViewController {
         
         if let email=emailTextField.text, let password=passwordTextField.text {
             FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
-                if user != nil {
+                if let u = user {
                     self.performSegue(withIdentifier: "toHome", sender: self)
                 }
                 else {
+                    print("User should be nil!!!")
+                    print("This is an error")
+                    print(error!)
                     // Check error message
                 }
             })
