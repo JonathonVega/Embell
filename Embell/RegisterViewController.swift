@@ -40,11 +40,24 @@ class RegisterViewController: UIViewController {
     @IBAction func registerAccountButtonTapped(_ sender: UIButton) {
         if let email=emailTextField.text, let password=passwordTextField.text {
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-                if let u = user {
+                if user != nil {
                     self.performSegue(withIdentifier: "toHome", sender: self)
                 } else {
                     
-                    // Check error message
+                    if let errCode = FIRAuthErrorCode(rawValue: (error as! NSError).code){
+                        
+                        switch errCode {
+                        case .errorCodeInvalidEmail:
+                            print("Invalid email")
+                        case .errorCodeEmailAlreadyInUse:
+                            print("Email already in use")
+                        default:
+                            print("Wrong in some way!!!")
+                        }
+                    }
+                    
+                    print("This is an error!!")
+                    print(error!)
                 }
             })
         }
