@@ -11,6 +11,7 @@
 		9C07F42E1E74877800078FF5 /* ChatRoomsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07F42D1E74877800078FF5 /* ChatRoomsTableViewCell.swift */; };
 		9C07F4301E75128000078FF5 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07F42F1E75128000078FF5 /* UserProfileViewController.swift */; };
 		9C07F4331E75CF1D00078FF5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07F4321E75CF1D00078FF5 /* Constants.swift */; };
+		9C07F4351E75D7EB00078FF5 /* DBProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C07F4341E75D7EB00078FF5 /* DBProvider.swift */; };
 		9C87DA1A1E71BC39009B5524 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C87DA191E71BC39009B5524 /* AppDelegate.swift */; };
 		9C87DA1F1E71BC39009B5524 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C87DA1D1E71BC39009B5524 /* Main.storyboard */; };
 		9C87DA211E71BC39009B5524 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C87DA201E71BC39009B5524 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		9C07F42D1E74877800078FF5 /* ChatRoomsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatRoomsTableViewCell.swift; sourceTree = "<group>"; };
 		9C07F42F1E75128000078FF5 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		9C07F4321E75CF1D00078FF5 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9C07F4341E75D7EB00078FF5 /* DBProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBProvider.swift; sourceTree = "<group>"; };
 		9C87DA161E71BC39009B5524 /* Embell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Embell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C87DA191E71BC39009B5524 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9C87DA1E1E71BC39009B5524 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				9C07F42B1E74871000078FF5 /* ChatRoomsTableViewController.swift */,
 				9C07F42D1E74877800078FF5 /* ChatRoomsTableViewCell.swift */,
 				9C07F42F1E75128000078FF5 /* UserProfileViewController.swift */,
+				9C07F4341E75D7EB00078FF5 /* DBProvider.swift */,
 				9C07F4311E75CD5200078FF5 /* Model */,
 				9C87DA201E71BC39009B5524 /* Assets.xcassets */,
 				9C87DA221E71BC39009B5524 /* LaunchScreen.storyboard */,
@@ -243,6 +246,7 @@
 				9C07F4301E75128000078FF5 /* UserProfileViewController.swift in Sources */,
 				9C87DA301E731AD3009B5524 /* RegisterViewController.swift in Sources */,
 				9C87DA2C1E722ADB009B5524 /* LoginViewController.swift in Sources */,
+				9C07F4351E75D7EB00078FF5 /* DBProvider.swift in Sources */,
 				9C07F4331E75CF1D00078FF5 /* Constants.swift in Sources */,
 				9C07F42E1E74877800078FF5 /* ChatRoomsTableViewCell.swift in Sources */,
 				9C87DA1A1E71BC39009B5524 /* AppDelegate.swift in Sources */,

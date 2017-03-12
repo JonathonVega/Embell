@@ -414,7 +414,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rct-BW-HhN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4277.6000000000004" y="465.51724137931041"/>
+            <point key="canvasLocation" x="4282" y="466"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

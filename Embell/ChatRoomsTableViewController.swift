@@ -11,7 +11,6 @@ import Firebase
 
 class ChatRoomsTableViewController: UITableViewController {
     
-    var ref: FIRDatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()

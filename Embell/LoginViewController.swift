@@ -41,6 +41,7 @@ class LoginViewController: UIViewController {
             FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
                 if user != nil {
                     self.performSegue(withIdentifier: "toHome", sender: self)
+                    print(user!.uid)
                 }
                 else {
                     

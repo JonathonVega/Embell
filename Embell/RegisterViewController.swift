@@ -31,6 +31,8 @@ class RegisterViewController: UIViewController {
         if let email=emailTextField.text, let password=passwordTextField.text {
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
                 if user != nil {
+                    
+                    DBProvider.Instance.saveUser(withID: user!.uid, email: email, password: password)
                     self.performSegue(withIdentifier: "toHome", sender: self)
                 } else {
                     
@@ -53,6 +55,7 @@ class RegisterViewController: UIViewController {
             })
         }
     }
+    
     
     @IBAction func backToSignInViewController(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
