@@ -99,7 +99,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.90957357768312863" green="0.8185677074878529" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4nF-5A-6mm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="0L7-Uo-JRM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lgf-29-XQe" secondAttribute="trailing" id="2v8-BF-dOE"/>
@@ -150,10 +150,10 @@
             </objects>
             <point key="canvasLocation" x="5216.8000000000002" y="465.51724137931041"/>
         </scene>
-        <!--View Controller-->
+        <!--User Profile View Controller-->
         <scene sceneID="rrh-s4-7ek">
             <objects>
-                <viewController id="3Av-FO-UH4" sceneMemberID="viewController">
+                <viewController id="3Av-FO-UH4" customClass="UserProfileViewController" customModule="Embell" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="weM-Zy-Aol"/>
                         <viewControllerLayoutGuide type="bottom" id="YbU-Ah-91b"/>
@@ -169,14 +169,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ui-tb-8nV">
+                                <rect key="frame" x="157" y="306" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="logOut:" destination="3Av-FO-UH4" eventType="touchUpInside" id="pts-oe-gVx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="bVf-df-hLu"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="signOutToLogin" id="UJb-ej-KFu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cjj-qt-9qd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3340" y="824.43778110944538"/>
+            <point key="canvasLocation" x="2401" y="1552"/>
         </scene>
         <!--Embell-->
         <scene sceneID="Qpt-O4-3Vo">
