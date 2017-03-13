@@ -236,7 +236,16 @@
                             <outlet property="delegate" destination="Cjb-6C-EfQ" id="U1I-kg-EZk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Embell" id="ixG-tm-ken"/>
+                    <navigationItem key="navigationItem" title="Embell" id="ixG-tm-ken">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="FZJ-xX-Hm9">
+                            <connections>
+                                <action selector="createChatRoom:" destination="Cjb-6C-EfQ" id="BBF-fu-i9G"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="pPb-cP-VAf" kind="show" identifier="createChatRoom" id="XYC-u1-mMC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qzX-3V-tdS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -397,6 +406,34 @@
             </objects>
             <point key="canvasLocation" x="2400.8000000000002" y="824.43778110944538"/>
         </scene>
+        <!--Table View Controller-->
+        <scene sceneID="J9r-aJ-5xi">
+            <objects>
+                <tableViewController id="pPb-cP-VAf" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Cun-CB-Fd1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="1rl-Wd-Y7g">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1rl-Wd-Y7g" id="27h-7K-uwu">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="pPb-cP-VAf" id="LYx-dU-bR2"/>
+                            <outlet property="delegate" destination="pPb-cP-VAf" id="i6V-bc-VBx"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PVd-jV-OF4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4281" y="-247"/>
+        </scene>
         <!--Bell-->
         <scene sceneID="OJc-0h-txX">
             <objects>
@@ -418,6 +455,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rz6-eH-tXg"/>
+        <segue reference="kIV-gD-XBe"/>
     </inferredMetricsTieBreakers>
 </document>

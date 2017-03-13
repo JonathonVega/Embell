@@ -11,7 +11,7 @@ import Foundation
 class Constants {
     
     // DBProvider
-    static let CONTACTS = "Contacts"
+    static let USERS = "Users"
     static let CHATROOMS = "Chat Rooms" // Might Move this somewhere else
     static let MESSAGES = "Messages"
     

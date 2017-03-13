@@ -29,7 +29,7 @@ class UserProfileViewController: UIViewController {
             let firebaseAuth = FIRAuth.auth()
             do {
                 try firebaseAuth?.signOut()
-                self.performSegue(withIdentifier: "signOutToLogin", sender: self)
+                dismiss(animated: true, completion: nil)
             } catch let signOutError as NSError{
                 print("Error signing out: %@", signOutError)
             }

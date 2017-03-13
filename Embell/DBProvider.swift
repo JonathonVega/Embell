@@ -24,8 +24,8 @@ class DBProvider {
     }
     
     
-    var contactRef: FIRDatabaseReference {
-        return dbRef.child(Constants.CONTACTS)
+    var userRef: FIRDatabaseReference {
+        return dbRef.child(Constants.USERS)
     }
     
     var messageRef: FIRDatabaseReference {
@@ -35,6 +35,6 @@ class DBProvider {
     func saveUser(withID: String, email: String, password: String) {
         let data: Dictionary<String, Any> = [Constants.EMAIL: email, Constants.PASSWORD: password]
         
-        contactRef.child(withID).setValue(data)
+        userRef.child(withID).setValue(data)
     }
 }
