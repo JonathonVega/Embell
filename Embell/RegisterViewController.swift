@@ -15,6 +15,10 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var firstNameTextField: UITextField!
+    
+    @IBOutlet weak var lastNameTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,12 +32,17 @@ class RegisterViewController: UIViewController {
     
     
     @IBAction func registerAccountButtonTapped(_ sender: UIButton) {
-        if let email=emailTextField.text, let password=passwordTextField.text {
+        if let email=emailTextField.text, let password=passwordTextField.text, let firstName=firstNameTextField.text, let lastName=lastNameTextField.text {
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
                 if user != nil {
                     
-                    DBProvider.Instance.saveUser(withID: user!.uid, email: email, password: password)
+                    
+                    DBProvider.Instance.saveUser(withID: user!.uid, email: email, password: password, firstName: firstName, lastName: lastName)
+                    
+                    
+                    self.dismiss(animated: true, completion: nil)
                     self.performSegue(withIdentifier: "toHome", sender: self)
+                    
                 } else {
                     
                     if let errCode = FIRAuthErrorCode(rawValue: (error as! NSError).code){
@@ -55,6 +64,29 @@ class RegisterViewController: UIViewController {
             })
         }
     }
+    
+    
+    /*func saveUserInfoToFirebase() {
+        if checkFirstNameField() && checkLastNameField() {
+            let firstName = self.firstName.text, lastName = self.lastName.text
+            if FIRAuth.auth()?.currentUser != nil {
+                
+            }
+            DBProvider.Instance.saveUser(withID: user!.uid, firstName: firstName, lastName: lastName)
+        }
+    }
+    
+    func checkFirstNameField() -> Bool{
+        return (firstName.text != nil)
+    }
+    
+    func checkLastNameField() -> Bool {
+        return (lastName.text != nil)
+    }*/
+    
+    
+    
+    
     
     
     @IBAction func backToSignInViewController(_ sender: UIButton) {

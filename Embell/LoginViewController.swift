@@ -43,6 +43,7 @@ class LoginViewController: UIViewController {
         if let email=emailTextField.text, let password=passwordTextField.text {
             FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
                 if user != nil {
+                    self.clearTextFields()
                     self.performSegue(withIdentifier: "toHome", sender: self)
                     print(user!.uid)
                 }
@@ -70,6 +71,11 @@ class LoginViewController: UIViewController {
                 }
             })
         }
+    }
+    
+    func clearTextFields() {
+        emailTextField.text = ""
+        passwordTextField.text = ""
     }
     
     // MARK: - Keyboard setup

@@ -23,7 +23,6 @@ class DBProvider {
         return FIRDatabase.database().reference()
     }
     
-    
     var userRef: FIRDatabaseReference {
         return dbRef.child(Constants.USERS)
     }
@@ -32,9 +31,47 @@ class DBProvider {
         return dbRef.child(Constants.MESSAGES)
     }
     
-    func saveUser(withID: String, email: String, password: String) {
-        let data: Dictionary<String, Any> = [Constants.EMAIL: email, Constants.PASSWORD: password]
+    // MARK: - save User to Firebase
+    
+    func saveUser(withID: String, email: String, password:String, firstName: String, lastName: String) {
+        let data: Dictionary<String, Any> = [Constants.EMAIL: email, Constants.PASSWORD: password, Constants.FIRSTNAME: firstName, Constants.LASTNAME: lastName]
         
         userRef.child(withID).setValue(data)
     }
+    
+    /*func saveUserInfo(withID: String, firstName: String, lastName: String) {
+        let data: Dictionary<String, Any> = [Constants.FIRSTNAME: firstName, Constants.LASTNAME: lastName]
+        
+        userRef.child(withID).setValue(data)
+    }*/
+    
+    
+    
+    // MARK: - Read User Info
+    
+    func readUserInfo() {
+        
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

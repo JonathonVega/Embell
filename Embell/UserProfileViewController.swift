@@ -8,13 +8,24 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class UserProfileViewController: UIViewController {
+    
+    var ref: FIRDatabaseReference!
+    
+    
+    @IBOutlet weak var firstName: UILabel!
+    
+    @IBOutlet weak var lastName: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref = FIRDatabase.database().reference()
 
         // Do any additional setup after loading the view.
+        loadUserInfo()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,6 +45,17 @@ class UserProfileViewController: UIViewController {
                 print("Error signing out: %@", signOutError)
             }
         }
+        
+    }
+    
+    func loadUserInfo() {
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child(Constants.USERS).child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let firstName = value?[Constants.FIRSTNAME] as? String ?? ""
+            print(firstName)
+            self.firstName.text = firstName
+        })
         
     }
 
