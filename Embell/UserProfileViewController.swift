@@ -15,9 +15,9 @@ class UserProfileViewController: UIViewController {
     var ref: FIRDatabaseReference!
     
     
-    @IBOutlet weak var firstName: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
-    @IBOutlet weak var lastName: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,9 +52,13 @@ class UserProfileViewController: UIViewController {
         let userID = FIRAuth.auth()?.currentUser?.uid
         ref.child(Constants.USERS).child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            let firstName = value?[Constants.FIRSTNAME] as? String ?? ""
-            print(firstName)
-            self.firstName.text = firstName
+            print(value!)
+            let name = value?[Constants.NAME] as? String ?? ""
+            print(name)
+            self.nameLabel.text = name
+            let email = value?[Constants.EMAIL] as? String ?? ""
+            print(email)
+            self.emailLabel.text = email
         })
         
     }

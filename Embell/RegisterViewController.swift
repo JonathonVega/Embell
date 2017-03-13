@@ -15,9 +15,7 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var firstNameTextField: UITextField!
-    
-    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var nameTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +30,12 @@ class RegisterViewController: UIViewController {
     
     
     @IBAction func registerAccountButtonTapped(_ sender: UIButton) {
-        if let email=emailTextField.text, let password=passwordTextField.text, let firstName=firstNameTextField.text, let lastName=lastNameTextField.text {
+        if let email=emailTextField.text, let password=passwordTextField.text, let name=nameTextField.text  {
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
                 if user != nil {
                     
                     
-                    DBProvider.Instance.saveUser(withID: user!.uid, email: email, password: password, firstName: firstName, lastName: lastName)
+                    DBProvider.Instance.saveUser(withID: user!.uid, email: email, password: password, name: name)
                     
                     
                     self.dismiss(animated: true, completion: nil)

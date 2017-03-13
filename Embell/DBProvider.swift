@@ -33,8 +33,8 @@ class DBProvider {
     
     // MARK: - save User to Firebase
     
-    func saveUser(withID: String, email: String, password:String, firstName: String, lastName: String) {
-        let data: Dictionary<String, Any> = [Constants.EMAIL: email, Constants.PASSWORD: password, Constants.FIRSTNAME: firstName, Constants.LASTNAME: lastName]
+    func saveUser(withID: String, email: String, password:String, name:String) {
+        let data: Dictionary<String, Any> = [Constants.EMAIL: email, Constants.PASSWORD: password, Constants.NAME: name]
         
         userRef.child(withID).setValue(data)
     }

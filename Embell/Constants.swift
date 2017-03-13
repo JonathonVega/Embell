@@ -17,8 +17,7 @@ class Constants {
     
     static let EMAIL = "email"
     static let PASSWORD = "password"
-    static let FIRSTNAME = "first name"
-    static let LASTNAME = "last name"
+    static let NAME = "name"
     
     // Messages
     static let TEXT = "text"
