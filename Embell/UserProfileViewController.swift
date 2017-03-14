@@ -18,6 +18,8 @@ class UserProfileViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var emailLabel: UILabel!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,16 @@ class UserProfileViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    @IBAction func goToContacts(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toContactsFromProfile", sender: self)
+    }
+    
+    
+    
+    
+    
     
     @IBAction func logOut(_ sender: UIButton) {
         
@@ -52,12 +64,11 @@ class UserProfileViewController: UIViewController {
         let userID = FIRAuth.auth()?.currentUser?.uid
         ref.child(Constants.USERS).child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
-            print(value!)
             let name = value?[Constants.NAME] as? String ?? ""
-            print(name)
+            //print(name)
             self.nameLabel.text = name
             let email = value?[Constants.EMAIL] as? String ?? ""
-            print(email)
+            //print(email)
             self.emailLabel.text = email
         })
         
