@@ -22,6 +22,8 @@
 		9C87DA2E1E722C7B009B5524 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C87DA2D1E722C7B009B5524 /* GoogleService-Info.plist */; };
 		9C87DA301E731AD3009B5524 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C87DA2F1E731AD3009B5524 /* RegisterViewController.swift */; };
 		9C9A50DB1E77700200C9AADD /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9A50DA1E77700200C9AADD /* ContactsTableViewController.swift */; };
+		9C9A50DF1E78DDC400C9AADD /* ContactProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9A50DE1E78DDC400C9AADD /* ContactProfileViewController.swift */; };
+		9C9A50E21E78E03100C9AADD /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9A50E11E78E03100C9AADD /* ContactTableViewCell.swift */; };
 		AB38B7B40682D7A64A317F62 /* Pods_Embell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C309C6ADC8544CB1A40D1BD6 /* Pods_Embell.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,8 @@
 		9C87DA2D1E722C7B009B5524 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9C87DA2F1E731AD3009B5524 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9C9A50DA1E77700200C9AADD /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		9C9A50DE1E78DDC400C9AADD /* ContactProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactProfileViewController.swift; sourceTree = "<group>"; };
+		9C9A50E11E78E03100C9AADD /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		C309C6ADC8544CB1A40D1BD6 /* Pods_Embell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Embell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD6B1C93145B34602EA550BF /* Pods-Embell.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Embell.release.xcconfig"; path = "Pods/Target Support Files/Pods-Embell/Pods-Embell.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,16 +111,11 @@
 		9C87DA181E71BC39009B5524 /* Embell */ = {
 			isa = PBXGroup;
 			children = (
+				9C9A50DC1E78C08800C9AADD /* Controller */,
+				9C07F4311E75CD5200078FF5 /* Model */,
 				9C87DA1D1E71BC39009B5524 /* Main.storyboard */,
 				9C87DA191E71BC39009B5524 /* AppDelegate.swift */,
-				9C87DA2B1E722ADB009B5524 /* LoginViewController.swift */,
-				9C87DA2F1E731AD3009B5524 /* RegisterViewController.swift */,
-				9C07F42B1E74871000078FF5 /* ChatRoomsTableViewController.swift */,
-				9C07F42D1E74877800078FF5 /* ChatRoomsTableViewCell.swift */,
-				9C07F42F1E75128000078FF5 /* UserProfileViewController.swift */,
-				9C9A50DA1E77700200C9AADD /* ContactsTableViewController.swift */,
 				9C07F4341E75D7EB00078FF5 /* DBProvider.swift */,
-				9C07F4311E75CD5200078FF5 /* Model */,
 				9C87DA201E71BC39009B5524 /* Assets.xcassets */,
 				9C50C0A61E776662005660B9 /* defaultProfileImage.png */,
 				9C87DA221E71BC39009B5524 /* LaunchScreen.storyboard */,
@@ -124,6 +123,29 @@
 				9C87DA2D1E722C7B009B5524 /* GoogleService-Info.plist */,
 			);
 			path = Embell;
+			sourceTree = "<group>";
+		};
+		9C9A50DC1E78C08800C9AADD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9C9A50DD1E78C0B900C9AADD /* Login/Register */,
+				9C07F42B1E74871000078FF5 /* ChatRoomsTableViewController.swift */,
+				9C07F42D1E74877800078FF5 /* ChatRoomsTableViewCell.swift */,
+				9C07F42F1E75128000078FF5 /* UserProfileViewController.swift */,
+				9C9A50DA1E77700200C9AADD /* ContactsTableViewController.swift */,
+				9C9A50E11E78E03100C9AADD /* ContactTableViewCell.swift */,
+				9C9A50DE1E78DDC400C9AADD /* ContactProfileViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		9C9A50DD1E78C0B900C9AADD /* Login/Register */ = {
+			isa = PBXGroup;
+			children = (
+				9C87DA2B1E722ADB009B5524 /* LoginViewController.swift */,
+				9C87DA2F1E731AD3009B5524 /* RegisterViewController.swift */,
+			);
+			name = Login/Register;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,9 +274,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C9A50E21E78E03100C9AADD /* ContactTableViewCell.swift in Sources */,
 				9C07F42C1E74871000078FF5 /* ChatRoomsTableViewController.swift in Sources */,
 				9C07F4301E75128000078FF5 /* UserProfileViewController.swift in Sources */,
 				9C9A50DB1E77700200C9AADD /* ContactsTableViewController.swift in Sources */,
+				9C9A50DF1E78DDC400C9AADD /* ContactProfileViewController.swift in Sources */,
 				9C87DA301E731AD3009B5524 /* RegisterViewController.swift in Sources */,
 				9C87DA2C1E722ADB009B5524 /* LoginViewController.swift in Sources */,
 				9C07F4351E75D7EB00078FF5 /* DBProvider.swift in Sources */,

@@ -13,6 +13,7 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
 
     @IBOutlet var userContactsTableView: UITableView!
     
+    
     let searchController = UISearchController(searchResultsController: nil)
     
     var contactsArray = [NSDictionary?]()
@@ -21,14 +22,20 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     var databaseRef = FIRDatabase.database().reference()
     
     
+    // User ID to pass for segue from selected cell
+    var contactIDToPass: String = ""
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.placeholder = "Look for Friends"
         
         databaseRef.child(Constants.USERS).queryOrdered(byChild: Constants.NAME).observe(.childAdded, with: { (snapshot) in
             
@@ -67,7 +74,7 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! ContactTableViewCell
 
         let user: NSDictionary?
         
@@ -77,57 +84,18 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
             user = self.contactsArray[indexPath.row]
         }
         
-        cell.textLabel?.text = user?[Constants.NAME] as? String
-        cell.detailTextLabel?.text = "Something"
-
+        cell.contactName?.text = user?[Constants.NAME] as? String
+        cell.contactImage?.image = #imageLiteral(resourceName: "defaultProfileImage.png")
+        cell.contactImage?.frame = CGRect(x: 0, y: 0, width: 64, height: 64)
+ 
         return cell
     }
- 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     func updateSearchResults(for searchController: UISearchController) {
         // Update the search results

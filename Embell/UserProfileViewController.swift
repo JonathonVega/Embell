@@ -41,10 +41,6 @@ class UserProfileViewController: UIViewController {
     }
     
     
-    
-    
-    
-    
     @IBAction func logOut(_ sender: UIButton) {
         
         if FIRAuth.auth()?.currentUser != nil {
@@ -64,6 +60,7 @@ class UserProfileViewController: UIViewController {
         let userID = FIRAuth.auth()?.currentUser?.uid
         ref.child(Constants.USERS).child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary
+            print(value!)
             let name = value?[Constants.NAME] as? String ?? ""
             //print(name)
             self.nameLabel.text = name
