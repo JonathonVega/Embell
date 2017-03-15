@@ -9,11 +9,17 @@
 import Foundation
 
 class Profile {
+    let userID: String
+    let name: String
     let email: String
-    /*let firstName: String
-    let lastName: String*/
     
-    init(email:String) {
+    init(userID:String, name:String, email:String) {
+        self.userID = userID
+        self.name = name
         self.email = email
     }
+    
+    /*let getName: String = {
+        return name
+    }()*/
 }

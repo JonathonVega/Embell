@@ -16,8 +16,8 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     
     let searchController = UISearchController(searchResultsController: nil)
     
-    var contactsArray = [NSDictionary?]()
-    var filteredContacts = [NSDictionary?]()
+    var contactsArray = [Profile]()
+    var filteredContacts = [Profile]()
     
     var databaseRef = FIRDatabase.database().reference()
     
@@ -30,16 +30,21 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupSearchController()
         
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
-        definesPresentationContext = true
-        tableView.tableHeaderView = searchController.searchBar
-        searchController.searchBar.placeholder = "Look for Friends"
+        
         
         databaseRef.child(Constants.USERS).queryOrdered(byChild: Constants.NAME).observe(.childAdded, with: { (snapshot) in
             
-            self.contactsArray.append(snapshot.value as? NSDictionary)
+            let contactInfo = snapshot.value as? NSDictionary
+            let contactName = (contactInfo?[Constants.NAME] as? String)!
+            let contactEmail = (contactInfo?[Constants.EMAIL] as? String)!
+            
+            
+            let contactProfile: Profile = Profile(userID: snapshot.key, name: contactName, email: contactEmail)
+            
+            print(snapshot.key)
+            self.contactsArray.append(contactProfile)
             
             // Insert the rows
             
@@ -48,6 +53,16 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
         }) { (error) in
             print(error.localizedDescription)
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,7 +91,7 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! ContactTableViewCell
 
-        let user: NSDictionary?
+        let user: Profile?
         
         if searchController.isActive && searchController.searchBar.text != "" {
             user = filteredContacts[indexPath.row]
@@ -84,9 +99,11 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
             user = self.contactsArray[indexPath.row]
         }
         
-        cell.contactName?.text = user?[Constants.NAME] as? String
+        print(self.contactsArray)
+        
+        cell.contactName?.text = user?.name
         cell.contactImage?.image = #imageLiteral(resourceName: "defaultProfileImage.png")
-        cell.contactImage?.frame = CGRect(x: 0, y: 0, width: 64, height: 64)
+        
  
         return cell
     }
@@ -94,8 +111,17 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    
+    
+    
 
-
+    func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.placeholder = "Look for Friends"
+    }
     
     func updateSearchResults(for searchController: UISearchController) {
         // Update the search results
@@ -104,9 +130,9 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     
     func filterContent(searchText:String) {
         self.filteredContacts = self.contactsArray.filter{ user in
-            let username = user![Constants.NAME] as? String
+            let username = user.name
             
-            return(username?.lowercased().contains(searchText.lowercased()))!
+            return(username.lowercased().contains(searchText.lowercased()))
         }
         userContactsTableView.reloadData()
     }
