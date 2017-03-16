@@ -11,7 +11,6 @@ import UIKit
 class ChatRoomsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var chatRoomImage: UIImageView!
-    
     @IBOutlet weak var chatRoomName: UILabel!
     
 

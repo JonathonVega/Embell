@@ -39,6 +39,13 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     }
     
     
+    
+    
+    
+    
+    
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -74,6 +81,16 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
         return cell
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    // MARK: - Selecting a cell
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let indexPath = tableView.indexPathForSelectedRow
@@ -98,7 +115,6 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     
     
     
-    
     // MARK: - Setup Profile from Firebase
     
     func addContactsFromFirebaseToContactsArray(){
@@ -111,7 +127,6 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
             
             let contactProfile: Profile = Profile(userID: snapshot.key, name: contactName, email: contactEmail)
             
-            print(snapshot.key)
             self.contactsArray.append(contactProfile)
             
             // Insert the rows
@@ -122,6 +137,12 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
             print(error.localizedDescription)
         }
     }
+    
+    
+    
+    
+    
+    
     
     
     // MARK: - Search Bar Setup

@@ -7,19 +7,47 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ContactProfileViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     
     var userID: String = ""
+    
+    var ref: FIRDatabaseReference!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         nameLabel.text = userID
+        
+        let ref = FIRDatabase.database().reference()
 
         // Do any additional setup after loading the view.
+        
+        
+        /*ref.child(Constants.USERS).child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            //print(value!)
+            let name = value?[Constants.NAME] as? String ?? ""
+            //print(name)
+            self.nameLabel.text = name
+            let email = value?[Constants.EMAIL] as? String ?? ""
+            //print(email)
+            self.emailLabel.text = email
+        })*/
+        
+        ref.child(Constants.USERS).child(userID).observeSingleEvent(of: .value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let name = value?[Constants.NAME] as? String
+            self.nameLabel.text = name
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+
     }
 
     override func didReceiveMemoryWarning() {

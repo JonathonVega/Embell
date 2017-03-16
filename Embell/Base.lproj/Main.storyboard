@@ -230,29 +230,32 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pWW-Jj-EVs">
-                                            <rect key="frame" x="8" y="4" width="367" height="60"/>
+                                            <rect key="frame" x="8" y="4.5" width="359" height="60.5"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="diV-PB-2OX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                    <rect key="frame" x="0.0" y="0.5" width="60" height="60"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="aq1-i5-qwc"/>
-                                                        <constraint firstAttribute="width" constant="60" id="kHr-LP-6c0"/>
+                                                        <constraint firstAttribute="width" constant="60" id="6tH-b0-Eg0"/>
+                                                        <constraint firstAttribute="height" constant="60" id="o0N-xV-Elr"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Contact" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81F-TF-ltK">
-                                                    <rect key="frame" x="60" y="20" width="307" height="20.5"/>
+                                                    <rect key="frame" x="60" y="20" width="299" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="81F-TF-ltK" firstAttribute="leading" secondItem="diV-PB-2OX" secondAttribute="trailing" id="GPa-SI-H94"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="pWW-Jj-EVs" firstAttribute="leading" secondItem="v4k-fP-H4m" secondAttribute="leadingMargin" id="70l-4p-lXN"/>
-                                        <constraint firstItem="pWW-Jj-EVs" firstAttribute="top" secondItem="v4k-fP-H4m" secondAttribute="top" constant="4" id="LCU-BV-PQc"/>
-                                        <constraint firstAttribute="bottom" secondItem="pWW-Jj-EVs" secondAttribute="bottom" constant="5" id="i48-qc-fU8"/>
-                                        <constraint firstAttribute="trailing" secondItem="pWW-Jj-EVs" secondAttribute="trailing" id="pot-bh-E5g"/>
+                                        <constraint firstItem="pWW-Jj-EVs" firstAttribute="top" secondItem="v4k-fP-H4m" secondAttribute="top" constant="4.5" id="Dnh-az-RvP"/>
+                                        <constraint firstAttribute="bottom" secondItem="pWW-Jj-EVs" secondAttribute="bottom" constant="4.5" id="VPV-g9-Dwk"/>
+                                        <constraint firstItem="pWW-Jj-EVs" firstAttribute="leading" secondItem="v4k-fP-H4m" secondAttribute="leadingMargin" id="oRg-yZ-khB"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="pWW-Jj-EVs" secondAttribute="trailing" id="xc1-H0-5Ys"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
