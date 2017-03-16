@@ -13,7 +13,6 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
 
     @IBOutlet var userContactsTableView: UITableView!
     
-    
     let searchController = UISearchController(searchResultsController: nil)
     
     var contactsArray = [Profile]()
@@ -22,8 +21,7 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     var databaseRef = FIRDatabase.database().reference()
     
     
-    // User ID to pass for segue from selected cell
-    var contactIDToPass: String = ""
+    var userIDToPass:String = ""
     
     
     
@@ -31,37 +29,7 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
         super.viewDidLoad()
         
         setupSearchController()
-        
-        
-        
-        databaseRef.child(Constants.USERS).queryOrdered(byChild: Constants.NAME).observe(.childAdded, with: { (snapshot) in
-            
-            let contactInfo = snapshot.value as? NSDictionary
-            let contactName = (contactInfo?[Constants.NAME] as? String)!
-            let contactEmail = (contactInfo?[Constants.EMAIL] as? String)!
-            
-            
-            let contactProfile: Profile = Profile(userID: snapshot.key, name: contactName, email: contactEmail)
-            
-            print(snapshot.key)
-            self.contactsArray.append(contactProfile)
-            
-            // Insert the rows
-            
-            self.userContactsTableView.insertRows(at: [IndexPath(row:self.contactsArray.count-1, section:0)], with: UITableViewRowAnimation.automatic)
-            
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        addContactsFromFirebaseToContactsArray()
         
     }
 
@@ -99,21 +67,64 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
             user = self.contactsArray[indexPath.row]
         }
         
-        print(self.contactsArray)
-        
         cell.contactName?.text = user?.name
         cell.contactImage?.image = #imageLiteral(resourceName: "defaultProfileImage.png")
-        
+        cell.userID = (user?.userID)!
  
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let indexPath = tableView.indexPathForSelectedRow
+        let currentCell = tableView.cellForRow(at: indexPath!) as! ContactTableViewCell
+        
+        userIDToPass = currentCell.userID
+        performSegue(withIdentifier: "seeContactProfileSegue", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "seeContactProfileSegue") {
+            let viewController = segue.destination as! ContactProfileViewController
+            viewController.userID = userIDToPass
+        }
     }
     
     
     
+    
+    
+    
+    
+    
+    
+    // MARK: - Setup Profile from Firebase
+    
+    func addContactsFromFirebaseToContactsArray(){
+        databaseRef.child(Constants.USERS).queryOrdered(byChild: Constants.NAME).observe(.childAdded, with: { (snapshot) in
+            
+            let contactInfo = snapshot.value as? NSDictionary
+            let contactName = (contactInfo?[Constants.NAME] as? String)!
+            let contactEmail = (contactInfo?[Constants.EMAIL] as? String)!
+            
+            
+            let contactProfile: Profile = Profile(userID: snapshot.key, name: contactName, email: contactEmail)
+            
+            print(snapshot.key)
+            self.contactsArray.append(contactProfile)
+            
+            // Insert the rows
+            
+            self.userContactsTableView.insertRows(at: [IndexPath(row:self.contactsArray.count-1, section:0)], with: UITableViewRowAnimation.automatic)
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    
+    // MARK: - Search Bar Setup
 
     func setupSearchController() {
         searchController.searchResultsUpdater = self

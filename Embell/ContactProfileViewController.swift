@@ -9,9 +9,15 @@
 import UIKit
 
 class ContactProfileViewController: UIViewController {
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    var userID: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nameLabel.text = userID
 
         // Do any additional setup after loading the view.
     }
