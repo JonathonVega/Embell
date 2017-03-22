@@ -229,7 +229,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pWW-Jj-EVs">
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pWW-Jj-EVs">
                                             <rect key="frame" x="8" y="4.5" width="359" height="60.5"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="diV-PB-2OX">
@@ -240,14 +240,15 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of Contact" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81F-TF-ltK">
-                                                    <rect key="frame" x="60" y="20" width="299" height="20.5"/>
+                                                    <rect key="frame" x="70" y="20" width="289" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="81F-TF-ltK" firstAttribute="leading" secondItem="diV-PB-2OX" secondAttribute="trailing" id="GPa-SI-H94"/>
+                                                <constraint firstAttribute="trailing" secondItem="81F-TF-ltK" secondAttribute="trailing" id="SHH-9x-Lu4"/>
+                                                <constraint firstItem="81F-TF-ltK" firstAttribute="leading" secondItem="diV-PB-2OX" secondAttribute="trailing" constant="10" id="i8s-2B-JDz"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>
@@ -361,6 +362,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="pPb-cP-VAf" kind="show" identifier="createChatRoom" id="XYC-u1-mMC"/>
+                        <segue destination="5oG-Xw-N37" kind="show" identifier="goToChat" id="b95-hM-kyZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qzX-3V-tdS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -577,7 +579,35 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PVd-jV-OF4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5217" y="-253"/>
+            <point key="canvasLocation" x="5217" y="-407"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="wpv-3Q-2Nt">
+            <objects>
+                <tableViewController id="5oG-Xw-N37" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="NmL-Lg-4CW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="WHa-Tv-952">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WHa-Tv-952" id="3rY-WO-GPy">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5oG-Xw-N37" id="ddH-zs-Lag"/>
+                            <outlet property="delegate" destination="5oG-Xw-N37" id="Zs2-Zf-7Pz"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="utw-Wm-SCa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4281" y="-654"/>
         </scene>
         <!--Bell-->
         <scene sceneID="OJc-0h-txX">

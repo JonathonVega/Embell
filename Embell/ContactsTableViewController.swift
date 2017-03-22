@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class ContactsTableViewController: UITableViewController, UISearchResultsUpdating {
 
@@ -19,7 +20,6 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     var filteredContacts = [Profile]()
     
     var databaseRef = FIRDatabase.database().reference()
-    
     
     var userIDToPass:String = ""
     
@@ -76,12 +76,17 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
         
         cell.contactName?.text = user?.name
         cell.contactImage?.image = #imageLiteral(resourceName: "defaultProfileImage.png")
+        cell.contactImage?.backgroundColor = UIColor.gray
+        cell.contactImage?.layer.cornerRadius = (cell.contactImage?.frame.size.width)!/2.0
+        cell.contactImage?.clipsToBounds = true
         cell.userID = (user?.userID)!
  
         return cell
     }
     
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70.0
+    }
     
     
     
@@ -115,10 +120,12 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
     
     
     
-    // MARK: - Setup Profile from Firebase
+    // MARK: - Setup Profiles from Firebase
     
     func addContactsFromFirebaseToContactsArray(){
         databaseRef.child(Constants.USERS).queryOrdered(byChild: Constants.NAME).observe(.childAdded, with: { (snapshot) in
+            
+            
             
             let contactInfo = snapshot.value as? NSDictionary
             let contactName = (contactInfo?[Constants.NAME] as? String)!
@@ -127,11 +134,15 @@ class ContactsTableViewController: UITableViewController, UISearchResultsUpdatin
             
             let contactProfile: Profile = Profile(userID: snapshot.key, name: contactName, email: contactEmail)
             
-            self.contactsArray.append(contactProfile)
-            
-            // Insert the rows
-            
-            self.userContactsTableView.insertRows(at: [IndexPath(row:self.contactsArray.count-1, section:0)], with: UITableViewRowAnimation.automatic)
+            if let user = FIRAuth.auth()?.currentUser {
+                if user.uid != snapshot.key {
+                    self.contactsArray.append(contactProfile)
+                    
+                    // Insert the rows
+                    self.userContactsTableView.insertRows(at: [IndexPath(row:self.contactsArray.count-1, section:0)], with: UITableViewRowAnimation.automatic)
+                    
+                }
+            }
             
         }) { (error) in
             print(error.localizedDescription)

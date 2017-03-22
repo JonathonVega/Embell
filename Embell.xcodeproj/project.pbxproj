@@ -128,9 +128,8 @@
 		9C9A50DC1E78C08800C9AADD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9C9A50DD1E78C0B900C9AADD /* Login/Register */,
-				9C07F42B1E74871000078FF5 /* ChatRoomsTableViewController.swift */,
-				9C07F42D1E74877800078FF5 /* ChatRoomsTableViewCell.swift */,
+				9C9A50E31E819EAD00C9AADD /* Chat Room VCs */,
+				9C9A50DD1E78C0B900C9AADD /* Login/Register VCs */,
 				9C07F42F1E75128000078FF5 /* UserProfileViewController.swift */,
 				9C9A50DA1E77700200C9AADD /* ContactsTableViewController.swift */,
 				9C9A50E11E78E03100C9AADD /* ContactTableViewCell.swift */,
@@ -139,13 +138,22 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		9C9A50DD1E78C0B900C9AADD /* Login/Register */ = {
+		9C9A50DD1E78C0B900C9AADD /* Login/Register VCs */ = {
 			isa = PBXGroup;
 			children = (
 				9C87DA2B1E722ADB009B5524 /* LoginViewController.swift */,
 				9C87DA2F1E731AD3009B5524 /* RegisterViewController.swift */,
 			);
-			name = Login/Register;
+			name = "Login/Register VCs";
+			sourceTree = "<group>";
+		};
+		9C9A50E31E819EAD00C9AADD /* Chat Room VCs */ = {
+			isa = PBXGroup;
+			children = (
+				9C07F42B1E74871000078FF5 /* ChatRoomsTableViewController.swift */,
+				9C07F42D1E74877800078FF5 /* ChatRoomsTableViewCell.swift */,
+			);
+			name = "Chat Room VCs";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
